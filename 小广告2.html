@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>广告</title>
+</head>
+<body>
+<style>
+*{
+	margin: 0;
+	padding: 0;
+}
+	.box{
+		width: 100px;
+		height: 100px;
+		background: green;
+		position: relative;
+		top: 0;
+		left: 0;
+	}
+/*   .box1{
+    width: 100px;
+    height: 100px;
+    background: green;
+    position: relative;
+    top: 100px;
+    left: 100px;
+  } */
+</style>
+	<div class="box"></div>
+<!--   <div class="box1"></div> -->
+</body>
+
+<script>
+// 	let box = document.getElementsByClassName('box')[0];
+//   let speed = 10;
+// 	let Y=window.innerHeight;
+// 	let boxY=box.offsetHeight;
+//     let X=window.innerWidth;
+//     let boxX=box.offsetWidth;
+//     let speed1=10
+
+
+//  let t = setInterval(move,100);
+//    function move (){
+//    	let tops=box.offsetTop
+//    if (tops<=0) {
+//    	tops=0;
+//    	speed=-speed;
+//    }
+//    if(tops>=Y-boxY) {
+//    	tops=Y-boxY;
+//    	speed=-speed;
+//    }
+//    	 box.style.top =tops+speed+'px';
+// }
+//  let t1 = setInterval(move1,100);
+//    function move1 (){
+//    	let topl=box.offsetLeft
+//    if (topl<=0) {
+//    	topl=0;
+//    	speed1=-speed1
+//    }
+//    if(topl>=X-boxX) {
+//    	topl=X-boxX;
+//    	speed1=-speed1;
+//    }
+//    	 box.style.left =topl+speed1+'px';
+// }
+
+
+function float(obj,speed){
+   this.name=obj;
+   this.speed = speed;
+   this.speed1 = speed;
+
+   this.maxX=window.innerWidth-this.name.offsetWidth;
+   this.maxY=window.innerHeight-this.name.offsetHeight;
+
+}
+ float.prototype.stop=function(){
+  clearInterval(this.t)
+  clearInterval(this.t1)
+
+ }
+ float.prototype.resize=function(){
+  this.maxX=window.innerWidth-this.name.offsetWidth;
+  this.maxY=window.innerHeight-this.name.offsetHeight;
+
+ }
+ float.prototype.move=function(){
+  let that = this;
+  this.t = setInterval(function(){
+      let lefts = that.name.offsetLeft+that.speed;
+      if (lefts<=0) {
+        lefts=0;
+        that.speed*=-1
+      }
+      if (lefts>=that.maxX) {
+        lefts=that.maxX;
+        that.speed*=-1
+      }
+      that.name.style.left =lefts+'px';
+
+  },60)
+    this.t1 = setInterval(function(){
+      let tops = that.name.offsetTop+that.speed1;
+      if (tops<=0) {
+        tops=0;
+        that.speed1*=-1
+      }
+      if (tops>=that.maxY) {
+        tops=that.maxY;
+        that.speed1*=-1
+      }
+      that.name.style.top =tops+'px';
+
+  },60)
+ }
+
+
+ let box = document.getElementsByClassName('box')[0];
+ // let box1 = document.getElementsByClassName('box1')[0];
+
+let obj = new float (box,10)
+ obj.move();
+ box.onmouseover=function(){
+  obj.stop();
+ }
+  box.onmouseout=function(){
+  obj.move();
+ }
+window.onresize=function(){
+  obj.resize();
+ }
+ // let obj1 = new float (box1)
+ // obj1.move();
+</script>
+</html>

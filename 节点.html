@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>节点</title>
+</head>
+<body>
+<div class="big-box">
+	<div class="box1"></div>
+	文本
+	<span>span</span>
+	<!-- hello -->
+
+</div>
+	<script>
+		// 用childNode模拟children
+  let box = document.querySelector('.big-box')
+
+  // 第一种方法
+  // let nod = box.childNodes;
+  // let ele = function(){
+  // 	let newarr = [];
+  //  for (let i=0;i<nod.length;i++){
+   	
+  //  	if (nod[i].nodeType==1) {
+  //  		newarr.push(nod[i])
+  //  	}
+  //  }
+  //   return newarr;
+  // }
+  // console.log(ele())
+
+// function children(parent){
+// 	let childs = parent.childNodes;
+// 	let newarr=Array.from(childs)
+// 	let newarr1=newarr.filter(elements=>elements.nodeType==1);
+//      return newarr1;
+// }
+// console.log(children(box));
+
+
+
+
+// 找和某个元素节点最近的的下一个元素节点
+// 获取element后面所有的兄弟元素：找到父元素=>获取父元素下的所有子元素，截取
+// function next (element,tagname){
+//   let parent = element.parentNode;
+//   let child = parent.children;
+//   let index = 0;
+//   for(){
+//   	if (child[i]==element){
+//   		index=i;
+//   		break;
+//   	}
+//   }
+// let nextall=Array.from(child).slice(index+1);
+// for(let i=0;i<nextall.length;i++){
+// 	if (nextall[i].nodeName==tagname.toUpperCase) {
+// 		return nextall[i]
+// 	}
+// }
+// }
+
+
+
+
+// closed   找离他最近的父元素   while
+
+
+	</script>
+
+</body>
+</html>
